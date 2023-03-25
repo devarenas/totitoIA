@@ -33,7 +33,7 @@ function btnPulsado(e, posicion) {
 
   if (validaPartida()) {
     console.log(`jugador ${valor} ha ganado`);
-    //alert(`jugador ${valor} ha ganado`);
+    alert(`jugador ${valor} ha ganado`);
     console.log(tablero);
     partidas.push(tablero.slice());
     console.log("partidas:");
@@ -175,7 +175,7 @@ function indiceJugadas(valorJugada) {
   } else if (valorJugada == 6) {
     return (posibleGana = [2, 5, 8]);
   } else if (valorJugada == 7) {
-    return (posibleGana = [0, 4, 6]);
+    return (posibleGana = [0, 4, 8]);
   } else if (valorJugada == 8) {
     return (posibleGana = [2, 4, 6]);
   }
@@ -247,8 +247,35 @@ function validarEspacio(arreglo, index) {
   console.log(arreglo[0]);
   console.log(arreglo[1]);
 
+  // if (div.value === "x" && div2.value === "x" && div3.value === "") {
+  //   div = document.getElementById(`pos${arreglo[2]}`);
+  //   while (div.value != "") {
+  //     let r = randomNumber(0, 8);
+  //     div = document.getElementById(`pos${r}`);
+  //   }
+  //   colocarFicha(div);
+  //   return true;
+  // }
+
   if (div.value === "x" && div2.value === "x" && div3.value === "") {
     div = document.getElementById(`pos${arreglo[2]}`);
+    while (div.value != "") {
+      let r = randomNumber(0, 8);
+      div = document.getElementById(`pos${r}`);
+    }
+    colocarFicha(div);
+    return true;
+  } else if (div.value === "" && div2.value === "x" && div3.value === "x"){
+
+    div = document.getElementById(`pos${arreglo[0]}`);
+    while (div.value != "") {
+      let r = randomNumber(0, 8);
+      div = document.getElementById(`pos${r}`);
+    }
+    colocarFicha(div);
+    return true;
+  } else if (div.value === "x" && div2.value === "" && div3.value === "x"){
+    div = document.getElementById(`pos${arreglo[1]}`);
     while (div.value != "") {
       let r = randomNumber(0, 8);
       div = document.getElementById(`pos${r}`);
